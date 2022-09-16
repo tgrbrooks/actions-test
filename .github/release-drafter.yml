@@ -10,14 +10,6 @@ categories:
       - 'bug'
   - title: '🧰 Maintenance'
     label: 'chore'
-autolabeler:
-  - label: 'feature'
-    title: 
-      - '/^Feature\/.+/'
-  - label: 'bug'
-      - '/fix\/.+/'
-    title:
-      - '/Fix/i'
 template: |
   ## What’s Changed
 
