@@ -28,10 +28,9 @@ jobs:
     - name: Transition issue
       uses: atlassian/gajira-transition@master
       with:
-        issue: ${{ steps.find.outputs.issue }}
         transition: "IN PROGRESS" 
     - name: Comment on issue
       uses: atlassian/gajira-comment@master
       with:
-      issue: $${{ steps.find.outputs.issue }}
-      comment: ${{ github.event.pull_request.url }}
+        issue: ${{ steps.find.outputs.issue }}
+        comment: ${{ github.event.pull_request.url }}
