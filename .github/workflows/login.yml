@@ -1,4 +1,7 @@
-on: push
+on:
+  pull_request:
+    types:
+      - ready_for_review
 
 name: Jira Example
 
