@@ -3,6 +3,7 @@ on:
     types:
       - opened
       - reopened
+      - synchronise
       - ready_for_review
 
 name: Jira Example
@@ -10,6 +11,7 @@ name: Jira Example
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
     name: Jira Example
     steps:
     - name: Login
