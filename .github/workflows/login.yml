@@ -34,4 +34,4 @@ jobs:
       uses: atlassian/gajira-comment@master
       with:
         issue: ${{ steps.find.outputs.issue }}
-        comment: ${{ github.event.pull_request.url }}
+        comment: ${{ github.event.pull_request.html_url }}
