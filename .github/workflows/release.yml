@@ -21,6 +21,6 @@ jobs:
       with:
         version: 1.0.20
     - name: Create Jira issue
-      run: Jira issue AT-1 -a tom.g.r.brooks@gmail.com
+      run: jira issue AT-1 -a tom.g.r.brooks@gmail.com
     - name: Create Jira version
       run: jira version AT -n ${{ github.event.release.name }}
