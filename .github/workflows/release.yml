@@ -10,17 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Release
     steps:
-    - name: Login
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    - name: Setup
-      uses: atlassian/gajira-cli@master
-      with:
-        version: 1.0.20
-    - name: Create Jira issue
-      run: curl --verbose -H "Authorization: Basic ${{ secrets.JIRA_API_TOKEN }}" -H "Content-Type: application/json" 'https://'${{ secrets.JIRA_BASE_URL }}'.atlassian.net/rest/api/2/issue/AT-1/assignee' -X PUT --data '{ "accountId": "62756031ca1fee006ae4a798" }'
     - name: Create Jira version
-      run: jira version AT -n ${{ github.event.release.name }}
+      run: curl -u ${{ secrets.JIRA_USER_EMAIL }}:${{ secrets.JIRA_API_TOKEN }} -H "Content-Type: application/json" '"${{ secrets.JIRA_BASE_URL }}"/rest/api/3/version' -X POST --data '{ "name": "'"${{ github.event.release.name }}"'", "released": true, "releaseDate": "'"$(date +'%Y-%m-%d')"'", "projectId": 10000, "description": "'"${{ github.event.release.html_url }}"'" }'
