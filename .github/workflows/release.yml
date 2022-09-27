@@ -21,6 +21,6 @@ jobs:
       with:
         version: 1.0.20
     - name: Create Jira issue
-      run: jira issue AT-1 -a tom.g.r.brooks@gmail.com
+      run: curl --verbose -H "Authorization: Basic ${{ secrets.JIRA_API_TOKEN }}" -H "Content-Type: application/json" 'https://'${{ secrets.JIRA_BASE_URL }}'.atlassian.net/rest/api/2/issue/AT-1/assignee' -X PUT --data '{ "accountId": "62756031ca1fee006ae4a798" }'
     - name: Create Jira version
       run: jira version AT -n ${{ github.event.release.name }}
