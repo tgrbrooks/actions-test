@@ -11,4 +11,5 @@ jobs:
     name: Jira Release
     steps:
     - name: Create Jira version
-      run: curl -u ${{ secrets.JIRA_USER_EMAIL }}:${{ secrets.JIRA_API_TOKEN }} -H "Content-Type: application/json" 'https://actionstest.atlassian.net/rest/api/3/version' -X POST --data '{ "name": "'"${{ github.event.release.name }}"'", "released": true, "releaseDate": "'"$(date +'%Y-%m-%d')"'", "projectId": 10000, "description": "'"${{ github.event.release.html_url }}"'" }'
+      run: |
+        curl -u ${{ secrets.JIRA_USER_EMAIL }}:${{ secrets.JIRA_API_TOKEN }} -H "Content-Type: application/json" 'https://actionstest.atlassian.net/rest/api/3/version' -X POST --data '{ "name": "'"${{ github.event.release.name }}"'", "released": true, "releaseDate": "'"$(date +'%Y-%m-%d')"'", "projectId": 10000, "description": "'"${{ github.event.release.html_url }}"'" }'
