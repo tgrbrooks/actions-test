@@ -21,4 +21,4 @@ jobs:
       with:
         version: 1.0.20
     - name: Create Jira version
-      run: jira version AT ${{ github.event.release.name }} --description ${{ github.event.release.url }}
+      run: jira version AT -n ${{ github.event.release.name }} -d ${{ github.event.release.html_url }} -r $(date +'%d/%b/%Y')
