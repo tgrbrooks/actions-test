@@ -2,4 +2,4 @@ hello
 hi?
 no-one home
 test login
-test merge
+test merge 2
