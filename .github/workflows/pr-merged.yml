@@ -5,12 +5,11 @@ on:
     types:
       - closed
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Transition to on DEV
-    if: ${{ github.event.pull_request.merged == true }}
+    if: github.event.pull_request.merged == true
     steps:
     - name: Login
       uses: atlassian/gajira-login@master
